@@ -5,7 +5,7 @@
 class Figure
 {
 protected:
-    int k, a, b, c, d, A, B, C, D;
+    int k;
 public:
     Figure(int k1)
     {
@@ -18,11 +18,11 @@ public:
         else
             return false;
     }
-    virtual void printf_info_1(int g)
+    virtual void printf_info_1()
     {
         std::cout << "Фигура: " << std::endl;
-        if (g == 1)
-        std::cout << "Правильная" << std::endl;
+        if (check())
+            std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
         std::cout << "Количество сторон: " << k << std::endl << std::endl;
@@ -32,6 +32,8 @@ public:
 
 class Triangle : public Figure
 {
+private:
+    int a, b, c, A, B, C;
 public:
     Triangle(int k1, int a1, int b1, int c1, int A1, int B1, int C1) : Figure(k1)
     {
@@ -44,10 +46,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Треугольник: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -60,34 +62,38 @@ public:
 
 class Right_Trianlge : public Figure
 {
+private:
+    int a, b, c, A, B, C;
 public:
     Right_Trianlge(int k1, int a1, int b1, int c1, int A1, int B1, int C1) : Figure(k1)
     {
         k = k1, a = a1, b = b1, c = c1, A = A1, B = B1, C = C1;
     }
-        bool check() override
-        {
-            if ((k == 3) && (C == 90))
-                return true;
-            else
-                return false;
-        }
-        void printf_info_1(int g) override
-        {
-            std::cout << "Прямоугольный треугольник: " << std::endl;
-            if (g == 1)
-                std::cout << "Правильная" << std::endl;
-            else
-                std::cout << "Неправильная" << std::endl;
-            std::cout << "Количество сторон: " << k << std::endl;
-            std::cout << "Стороны: " << "a=" << a << ", b=" << b << ", c=" << c << std::endl;
-            std::cout << "Углы: " << "A=" << A << ", B=" << B << ", C=" << C << std::endl << std::endl;
-        }
+    bool check() override
+    {
+        if ((k == 3) && (C == 90))
+            return true;
+        else
+            return false;
+    }
+    void printf_info_1() override
+    {
+        std::cout << "Прямоугольный треугольник: " << std::endl;
+        if (check())
+            std::cout << "Правильная" << std::endl;
+        else
+            std::cout << "Неправильная" << std::endl;
+        std::cout << "Количество сторон: " << k << std::endl;
+        std::cout << "Стороны: " << "a=" << a << ", b=" << b << ", c=" << c << std::endl;
+        std::cout << "Углы: " << "A=" << A << ", B=" << B << ", C=" << C << std::endl << std::endl;
+    }
 };
 
 
 class Isosceles_Trianlge : public Figure
 {
+private:
+    int a, b, c, A, B, C;
 public:
     Isosceles_Trianlge(int k1, int a1, int b1, int c1, int A1, int B1, int C1) : Figure(k1)
     {
@@ -100,10 +106,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Равнобедренный треугольник: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -116,6 +122,8 @@ public:
 
 class Equilateral_Trianlge : public Figure
 {
+private:
+    int a, b, c, A, B, C;
 public:
     Equilateral_Trianlge(int k1, int a1, int b1, int c1, int A1, int B1, int C1) : Figure(k1)
     {
@@ -128,10 +136,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Равносторонний треугольник: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -144,6 +152,8 @@ public:
 
 class Quadrilateral : public Figure
 {
+private:
+    int a, b, c, d, A, B, C, D;
 public:
     Quadrilateral(int k1, int a1, int b1, int c1, int d1, int A1, int B1, int C1, int D1) : Figure(k1)
     {
@@ -156,10 +166,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Четырехугольник: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -172,6 +182,8 @@ public:
 
 class Rectanglee : public Figure
 {
+private:
+    int a, b, c, d, A, B, C, D;
 public:
     Rectanglee(int k1, int a1, int b1, int c1, int d1, int A1, int B1, int C1, int D1) : Figure(k1)
     {
@@ -184,10 +196,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Прямоугольник: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -200,6 +212,8 @@ public:
 
 class Square : public Figure
 {
+private:
+    int a, b, c, d, A, B, C, D;
 public:
     Square(int k1, int a1, int b1, int c1, int d1, int A1, int B1, int C1, int D1) : Figure(k1)
     {
@@ -212,10 +226,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Квадрат: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -228,6 +242,8 @@ public:
 
 class Parallelogram : public Figure
 {
+private:
+    int a, b, c, d, A, B, C, D;
 public:
     Parallelogram(int k1, int a1, int b1, int c1, int d1, int A1, int B1, int C1, int D1) : Figure(k1)
     {
@@ -240,10 +256,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Параллелограмм: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -256,6 +272,8 @@ public:
 
 class Rhombus : public Figure
 {
+private:
+    int a, b, c, d, A, B, C, D;
 public:
     Rhombus(int k1, int a1, int b1, int c1, int d1, int A1, int B1, int C1, int D1) : Figure(k1)
     {
@@ -268,10 +286,10 @@ public:
         else
             return false;
     }
-    void printf_info_1(int g) override
+    void printf_info_1() override
     {
         std::cout << "Ромб: " << std::endl;
-        if (g == 1)
+        if (check())
             std::cout << "Правильная" << std::endl;
         else
             std::cout << "Неправильная" << std::endl;
@@ -285,10 +303,8 @@ public:
 void printf_1(Figure& default_link) //наследные классы могут быть с типом родителя (иначе пришлось бы делать много ф-ий).
 //Так же передаем по ссылке, т.е. не копию, а сам объект, чтобы читался нужный метод (из нужного наследного класса)
 {
-    if (default_link.check())
-    default_link.printf_info_1(1);
-    else
-        default_link.printf_info_1(0);
+
+    default_link.printf_info_1();
 }
 
 int main()
@@ -298,7 +314,7 @@ int main()
     SetConsoleCP(1251);
     Figure figure(0);
     printf_1(figure);
-    Triangle triangle(3,10, 20, 30, 50, 60, 70);
+    Triangle triangle(3, 10, 20, 30, 50, 60, 70);
     printf_1(triangle);
     Right_Trianlge right_trianlge(3, 10, 20, 30, 50, 60, 80); //задаем для проверки угол C = 80;
     printf_1(right_trianlge);
@@ -310,11 +326,11 @@ int main()
     printf_1(quadrilateral);
     Rectanglee rectangle(4, 10, 20, 10, 30, 90, 90, 90, 90); //задаем для проверки четвертую сторону d = 30;
     printf_1(rectangle);
-    Square square(4, 10, 10, 10, 10, 90 ,90, 90, 90);
+    Square square(4, 10, 10, 10, 10, 90, 90, 90, 90);
     printf_1(square);
     Parallelogram parallelogram(4, 10, 20, 10, 20, 60, 90, 60, 90);
     printf_1(parallelogram);
     Rhombus rhombus(4, 10, 10, 10, 10, 60, 90, 60, 90);;
-    printf_1(rhombus); 
+    printf_1(rhombus);
     return 0;
 }
