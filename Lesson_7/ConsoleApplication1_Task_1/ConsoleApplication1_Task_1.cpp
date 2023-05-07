@@ -12,7 +12,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
-	int a, b;
+	int a = 0, b = 0;
 #ifndef MODE
 #error You must declared vareiable MODE
 #elif MODE == 0
@@ -27,7 +27,7 @@ int main()
 		std::cout << "Результат сложения: ";
 		std::cout << add(a, b);
 	}
-#else ((MODE!== 1) && (MODE!==0))
+#else
 	std::cout << "Неизвестный режим, завершение работы";
 #endif
 	return 0;
