@@ -1,0 +1,10 @@
+#pragma once
+#include "Figure.h"
+
+class Equilateral_Trianlge : public Figure
+{
+private:
+    int a, b, c, A, B, C;
+public:
+    Equilateral_Trianlge(int k1, int a1, int b1, int c1, int A1, int B1, int C1);
+};
