@@ -1,20 +1,21 @@
 ﻿#include <iostream>
 #include <Windows.h>
 #include <string>
+#include <exception>
 
-class bad_lenght
+class bad_lenght : std::exception
 {
 public:
-	bad_lenght(std::string message)
+	bad_lenght(const char* message)
 	{
 		this->message = message;
 	}
-	void print()
+	const char* what() const override
 	{
-		std::cout << this->message;
+		return message;
 	}
 private:
-	std::string message;
+	const char* message;
 };
 
 int function(std::string str, int forbidden_length)
@@ -49,7 +50,7 @@ int main()
 	}
 	catch (bad_lenght& error)
 	{
-		error.print();
+		std::cout << error.what();
 	}
 	return 0;
 }
