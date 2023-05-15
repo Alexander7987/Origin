@@ -67,7 +67,7 @@ public:
 		return Fraction(a, b);
 	}
 
-	Fraction operator - (Fraction other) //ВНИМАНИЕ.В предыдущей перегрузке оператора "+" в функции приведения к общему знаменателю сохранились значения только для объекта f1, т.к. он передается "левым" (т.е. основным) операндом. Значения под переменной other (для f2) сохранились только для внутреннего использования в перегрузке для "+"! Поэтому значения для f2 в перегрузке для "-" мы должны снова переопределить переменные для other.numerator, а знаменатель взять из denominator_, т.к. он одинаков для всех дробей после приведения к общему знаменателю
+	Fraction operator - (Fraction other)
 	{
 		reserve_numerator = numerator_;
 		reserve_denominator = denominator_;
@@ -97,7 +97,7 @@ public:
 	{
 		reserve_numerator = numerator_;
 		reserve_denominator = denominator_;
-		reserve_numerator = reserve_numerator * other.denominator_;  //умножаем
+		reserve_numerator = reserve_numerator * other.denominator_;  //перевернули дробь и умножаем
 		reserve_denominator = reserve_denominator * other.numerator_;
 		int a = reserve_numerator;
 		int b = reserve_denominator;
@@ -123,15 +123,11 @@ public:
 		return Fraction(reserve_numerator, reserve_denominator); //передаем старые данные, чтобы корректно производить расчеты при сложениях, вычитаниях и т.п.
 	}
 
-	Fraction operator ++ () //префиксный инкремент. Здесь работаем с самим объектом, поэтому
+	Fraction operator ++ () //префиксный инкремент
 	{
 		numerator_ = numerator_ + denominator_;
 		get_fraction(numerator_, denominator_); //сокращаем полученную дробь
 		return Fraction(numerator_, denominator_); //передаем новые данные, чтобы корретно производить расчеты при сложениях, вычитаниях и т.п.
-
-		numerator_ = numerator_ + denominator_;
-		get_fraction(numerator_, denominator_); //сокращаем полученную дробь
-		return Fraction(numerator_, denominator_);
 	}
 
 	Fraction operator -- (int) //постфиксный декремент
@@ -143,15 +139,11 @@ public:
 		return Fraction(reserve_numerator, reserve_denominator); //передаем старые данные, чтобы корректно производить расчеты при сложениях, вычитаниях и т.п.
 	}
 
-	Fraction operator -- () //префиксный инкремент. Здесь работаем с самим объектом, поэтому
+	Fraction operator -- () //префиксный декремент
 	{
 		numerator_ = numerator_ - denominator_;
 		get_fraction(numerator_, denominator_); //сокращаем полученную дробь
 		return Fraction(numerator_, denominator_); //передаем новые данные, чтобы корретно производить расчеты при сложениях, вычитаниях и т.п.
-
-		numerator_ = numerator_ + denominator_;
-		get_fraction(numerator_, denominator_); //сокращаем полученную дробь
-		return Fraction(numerator_, denominator_);
 	}
 	friend std::ostream& operator << (std::ostream& out, Fraction other);
 };
