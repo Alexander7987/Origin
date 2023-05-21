@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22.0)
+project(Task_3_CMake)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+add_library(Task_3_Library_Dynamic SHARED Task_3.h Task_3.cpp)
+add_executable(Task_3_Exe Task_3_Client.cpp)
+target_link_libraries(Task_3_Exe Task_3_Library_Dynamic)

@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.22.0)
+project(Task_5_CMake)
+add_library(Task_5_Library_Dynamic SHARED Triangle.cpp Triangle.h Equilateral_Triangle.cpp Equilateral_Triangle.h Isosceles_Triangle.cpp Isosceles_Triangle.h Parallelogram.cpp Parallelogram.h Quadrilateral.cpp Quadrilateral.h Rectanglee.cpp Rectanglee.h Rhombus.cpp Rhombus.h Right_Triangle.cpp Right_Triangle.h Square.cpp Square.h)
+add_executable(Task_5_Exe Task_5_Client.cpp)
+target_link_libraries(Task_5_Exe Task_5_Library_Dynamic)
