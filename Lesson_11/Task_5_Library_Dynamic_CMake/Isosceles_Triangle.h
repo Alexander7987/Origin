@@ -1,11 +1,6 @@
 #pragma once
 #include "Triangle.h"
 
-#ifdef TASK5LIBRARYDYNAMIC_EXPORTS
-#define TASK5_API __declspec(dllexport)
-#else
-#define TASK5_API __declspec(dllimport)
-#endif
 
 class Isosceles_Trianlge : public Triangle
 {
